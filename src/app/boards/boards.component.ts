@@ -82,8 +82,7 @@ export class BoardsComponent implements OnInit {
       this.boardService.createTask(data)
         .subscribe(task => {
           this.tasks = [...this.tasks, task];
-          this.newTaskForm.reset();
-          this.newTaskBoardId = null;
+          this.clearNewTaskForm();
         });
     }
   }
