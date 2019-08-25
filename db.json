@@ -1,0 +1,33 @@
+{
+  "boards": [
+    { "id": 1, "name": "Todos" },
+    { "id": 2, "name": "Working On" },
+    { "id": 3, "name": "Completed" }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Learn Angular",
+      "description": "Learn Angular for the first time.",
+      "boardId": 2
+    },
+    {
+      "id": 2,
+      "title": "Learn C#",
+      "description": "Because I want to try Unity <3",
+      "boardId": 1
+    },
+    {
+      "id": 3,
+      "title": "Find New Job",
+      "description": "Find Senior Front End Developer Position",
+      "boardId": 1
+    },
+    {
+      "id": 4,
+      "title": "Learn ReactJS",
+      "description": "Learn Facebook ReactJS",
+      "boardId": 3
+    }
+  ]
+}
