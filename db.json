@@ -37,6 +37,18 @@
       "title": "Learn ReactJS",
       "description": "Learn Facebook ReactJS",
       "boardId": 3
+    },
+    {
+      "boardId": 1,
+      "title": "My First Angular App",
+      "description": "Practice to create a simple scrum board using Angular",
+      "id": 5
+    },
+    {
+      "boardId": 3,
+      "title": "Learn VueJS",
+      "description": "Learn simple VueJS",
+      "id": 6
     }
   ]
 }

@@ -1,4 +1,4 @@
 export class Board {
-  id: number;
+  id?: number;
   name: string;
 }

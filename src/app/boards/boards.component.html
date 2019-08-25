@@ -18,7 +18,7 @@
     </div>
 
     <div class="tools">
-      <button (click)="createTask()">
+      <button (click)="newTask(board.id)">
         <img src="assets/icons/playlist-add.svg" />
       </button>
       <button (click)="editBoard(board.id)">
@@ -28,6 +28,40 @@
         <img src="assets/icons/remove.svg" />
       </button>
     </div>
+
+    <form
+      class="new-task-form"
+      *ngIf="newTaskBoardId === board.id"
+      [formGroup]="newTaskForm"
+      (ngSubmit)="onNewTaskSubmit(newTaskForm.value)"
+    >
+      <label [class.error]="newTaskFormErrors.title.required">
+        <p class="label-title">Title</p>
+        <input
+          type="text" required
+          formControlName="title"
+          placeholder="Task Title"
+        />
+      </label>
+
+      <label [class.error]="newTaskFormErrors.description.required">
+        <p class="label-title">Description</p>
+        <input
+          type="text" required
+          formControlName="description"
+          placeholder="Task Description"
+        />
+      </label>
+
+      <div class="btn-group">
+        <button type="submit">
+          <img src="assets/icons/done.svg" />
+        </button>
+        <button (click)="clearNewTaskForm()">
+          <img src="assets/icons/clear.svg" />
+        </button>      
+      </div>
+    </form>
 
     <ul class="tasks">
       <li
