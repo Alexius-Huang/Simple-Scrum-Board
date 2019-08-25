@@ -1,0 +1,17 @@
+<ul class="boards">
+  <li
+    class="board"
+    *ngFor="let board of boards"
+  >
+    <h2>{{ board.name }}</h2>
+    <ul class="tasks">
+      <li
+        class="task"
+        *ngFor="let task of boardTaskMap.get(board.id)"
+      >
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+      </li>
+    </ul>
+  </li>
+</ul>

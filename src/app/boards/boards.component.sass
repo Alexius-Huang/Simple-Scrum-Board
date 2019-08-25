@@ -1,0 +1,43 @@
+ul.boards
+  width: 100%
+  padding: 0
+  white-space: nowrap
+  overflow-x: auto
+
+  > li.board
+    vertical-align: top
+    display: inline-block
+    width: 200pt
+    height: auto
+    box-sizing: border-box
+    padding: 8pt 10pt
+    background-color: rgba(255, 255, 255, .25)
+    border-radius: 2px
+    + li.board
+      margin-left: 20pt
+
+    > h2
+      font: lighter 14pt
+      margin: 0
+
+
+ul.tasks
+  max-height: 75vh
+  margin-left: -10pt
+  margin-right: -10pt
+  overflow-y: auto
+  margin-top: 8pt
+
+  > li.task
+    padding: 4pt 10pt
+    white-space: normal
+    background-color: rgba(0, 0, 0, .25)
+
+  > h3
+    font-size: 12pt
+
+  > p
+    font-size: 10pt/24pt
+
+  > li.task + li.task
+    margin-top: 4pt
