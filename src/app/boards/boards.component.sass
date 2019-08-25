@@ -1,3 +1,5 @@
+@import '../../sass/helpers.sass'
+
 ul.boards
   width: 100%
   padding: 0
@@ -13,20 +15,41 @@ ul.boards
     padding: 8pt 10pt
     background-color: rgba(255, 255, 255, .25)
     border-radius: 2px
+    border-bottom: 3pt solid white
     + li.board
       margin-left: 20pt
 
     > h2
       font: lighter 14pt
-      margin: 0
+      color: #333
+      background-color: white
+      margin: -8pt -10pt 0 -10pt
+      padding: 8pt 10pt
 
+    > div.tools
+      height: 0
+      overflow: hidden
+      text-align: right
+      margin: 0 -10pt
+      transition: .25s
+
+      > button
+        width: 30pt
+        height: 30pt
+        @include vertical-align
+
+        &:hover
+          background-color: rgba(255, 255, 255, .25)
+
+    &:hover > div.tools
+      height: 30pt
+      transition: .25s
 
 ul.tasks
   max-height: 75vh
   margin-left: -10pt
   margin-right: -10pt
   overflow-y: auto
-  margin-top: 8pt
 
   > li.task
     padding: 4pt 10pt

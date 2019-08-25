@@ -42,4 +42,16 @@ export class BoardsComponent implements OnInit {
     this.boardService.fetchTasks()
       .subscribe(data => this.tasks = data);
   }
+
+  createTask(): void {
+    console.log('Create item');
+  }
+
+  editBoard(boardId: number): void {
+    console.log('edit item');
+  }
+
+  removeBoard(boardId: number): void {
+    console.log('remove item');
+  }
 }

@@ -4,6 +4,19 @@
     *ngFor="let board of boards"
   >
     <h2>{{ board.name }}</h2>
+
+    <div class="tools">
+      <button (click)="createTask()">
+        <img src="assets/icons/playlist-add.svg" />
+      </button>
+      <button (click)="editBoard(board.id)">
+        <img src="assets/icons/edit.svg" />
+      </button>
+      <button (click)="removeBoard(board.id)">
+        <img src="assets/icons/remove.svg" />
+      </button>
+    </div>
+
     <ul class="tasks">
       <li
         class="task"
