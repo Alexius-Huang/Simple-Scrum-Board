@@ -12,6 +12,9 @@ export class BoardsComponent implements OnInit {
   boards: Board[] = [];
   tasks: Task[] = [];
 
+  boardEditingId?: number;
+  cacheBoardName?: string;
+
   get boardTaskMap(): Map<number, Task> {
     const { boards, tasks } = this;
     const mapping = boards.reduce((acc, board) =>
@@ -48,7 +51,22 @@ export class BoardsComponent implements OnInit {
   }
 
   editBoard(boardId: number): void {
-    console.log('edit item');
+    this.boardEditingId = boardId;
+    this.cacheBoardName = this.boards.find(({ id }) => id === boardId).name;
+  }
+
+  updateBoardName(params: { id: number, name: string }): void {
+    const index: number = this.boards.findIndex(({ id }) => id === params.id);
+    const board: Board = this.boards[index];
+    const newBoard: Board = { ...board, name: params.name };
+    this.boardService.updateBoard(params.id, newBoard)
+      .subscribe(board => {
+        const newBoards: Board[] = Array.from(this.boards);
+        newBoards[index] = board;
+        this.boards = newBoards;
+        this.cacheBoardName = null;
+        this.boardEditingId = null;
+      });
   }
 
   removeBoard(boardId: number): void {

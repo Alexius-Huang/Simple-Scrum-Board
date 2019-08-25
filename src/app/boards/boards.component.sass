@@ -19,12 +19,31 @@ ul.boards
     + li.board
       margin-left: 20pt
 
-    > h2
-      font: lighter 14pt
-      color: #333
-      background-color: white
+    > div.title-wrapper
       margin: -8pt -10pt 0 -10pt
       padding: 8pt 10pt
+      background-color: white
+      position: relative
+
+    > div.title-wrapper > h2
+      font: lighter 14pt
+      color: #333
+      margin: 0
+
+    > div.title-wrapper > input.edit-board-input
+      height: 20pt
+      line-height: 20pt
+      font-size: 12pt
+      border-bottom: 1pt solid #222
+      width: 100%
+
+    > div.title-wrapper > button.update-board
+      width: 20pt
+      height: 20pt
+      position: absolute
+      right: 10pt
+      top: 8pt
+      @include vertical-align
 
     > div.tools
       height: 0

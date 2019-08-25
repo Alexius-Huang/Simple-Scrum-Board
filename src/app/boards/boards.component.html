@@ -3,7 +3,19 @@
     class="board"
     *ngFor="let board of boards"
   >
-    <h2>{{ board.name }}</h2>
+    <div class="title-wrapper">
+      <h2 *ngIf="boardEditingId !== board.id; else editBoardInput">{{ board.name }}</h2>
+      <ng-template #editBoardInput>
+        <input
+          class="edit-board-input"
+          [(ngModel)]="cacheBoardName"
+          (keyDown.enter)="updateBoardName({ id: board.id, name: cacheBoardName })"
+        />
+        <button class="update-board" (click)="updateBoardName({ id: board.id, name: cacheBoardName })">
+          <img src="assets/icons/done-black.svg" class="icon">
+        </button>
+      </ng-template>
+    </div>
 
     <div class="tools">
       <button (click)="createTask()">

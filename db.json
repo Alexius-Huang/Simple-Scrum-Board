@@ -1,8 +1,17 @@
 {
   "boards": [
-    { "id": 1, "name": "Todos" },
-    { "id": 2, "name": "Working On" },
-    { "id": 3, "name": "Completed" }
+    {
+      "id": 1,
+      "name": "Todos and Ideas"
+    },
+    {
+      "id": 2,
+      "name": "Working On"
+    },
+    {
+      "id": 3,
+      "name": "Completed"
+    }
   ],
   "tasks": [
     {
