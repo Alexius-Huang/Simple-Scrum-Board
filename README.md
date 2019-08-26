@@ -31,7 +31,31 @@ Open your browser and navigate to `localhost:4200/`, there you go!
 
 ## FAQ
 
+Q: How to achieve two-way binding?
+
+A: You need to import a package called `FormsModule` in your `app.module.ts` file:
+
+```typescript
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [...],
+  imports: [
+    ...,
+    FormsModule,
+  ],
+  ...
+})
+```
+
+Then you can use `[(ngModel)]` to achieve two-way binding:
+
+```html
+<input type="text" [(ngModel)]="someProperty" />
+```
+
 Q: How do you achieve `computed` properties similar to VueJS?
+
 A: Use the TypeScript getter methods (getter modifiers), for instance:
 
 ```typescript
@@ -56,7 +80,78 @@ export class BoardsComponent implements OnInit {
 }
 ```
 
+Q: How to pass properties or data from parent component to child component?
+
+A: Use the decorator `@Input` (from the package `@angular/core`) to declare the properties of the child component:
+
+```typescript
+import { Component, ..., Input } from '@angular/core';
+
+export class ChildComponent {
+  /* Use original name as props */
+  @Input() title: string;
+
+  /* Use different property name */
+  @Input('content') description: string;
+}
+```
+
+And in parent component HTML file, you can pass value into child component's props:
+
+```html
+<child-component
+  [title]="title"
+  [content]="content"
+></child-component>
+```
+
+Q: How to emit the event from the child to the parent component? (How to pass data from child to parent?)
+
+A: Contrary to the `@Input` decorator, use the `@Output` decorator to declare the event emitter (using the class `EventEmitter`). Both `Output` and `EventEmitter` belongs to `@angular/core` package. First of all, declare the event emitter:
+
+```typescript
+import { Component, ..., Output, EventEmitter } from '@angular/core';
+
+export class ChildComponent {
+  /*
+   *  The type string means the event will emit the data of type string
+   *  from child to parent component
+   */
+  @Output() onClick = new EventEmitter<string>();
+}
+```
+
+Secondly, in your child component template file, you need to specify where to fire the event:
+
+```html
+<button (click)="handleClick('Clicked!')">Click Me!</button>
+```
+
+Then, back to your component TypeScript file, start emit the event:
+
+```typescript
+import { Component, ..., Output, EventEmitter } from '@angular/core';
+
+export class ChildComponent {
+  @Output() onClick = new EventEmitter<string>();
+
+  handleClick(message: string): void {
+    // The emitted message must matched the type of the data emit to the parent
+    this.onClick.emit(<string>message);
+  }
+}
+```
+
+Lastly, in the parent component template file, you can access the child component emitted data via `$event` variable:
+
+```html
+<child-component
+  (onClick)="handleClick($event)"
+></child-component>
+```
+
 Q: How to use Angular `if...else...` template?
+
 A: Alternatives is to nest condition with `ng-template` and `ng-container`:
 
 ```html
@@ -72,9 +167,11 @@ A: Alternatives is to nest condition with `ng-template` and `ng-container`:
 ```
 
 Q: How to place the image assets?
+
 A: Put your asset files in `/src/assets` directory, then you can specify the target asset file source URL as `/assets/<YOUR_ASSET_FILE_LOCATION>`
 
 Q: How to implement form submission feature in Angular?
+
 A: First of all, the feature resides in `ReactiveFormsModule` in `@angular/forms` package, so we will import it in `app.module.ts` file:
 
 ```typescript
