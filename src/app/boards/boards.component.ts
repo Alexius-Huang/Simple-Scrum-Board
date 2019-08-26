@@ -97,7 +97,7 @@ export class BoardsComponent implements OnInit {
     this.cacheBoardName = this.boards.find(({ id }) => id === boardId).name;
   }
 
-  updateBoardName(params: { id: number, name: string }): void {
+  updateBoardName(params: Board): void {
     const index: number = this.boards.findIndex(({ id }) => id === params.id);
     const board: Board = this.boards[index];
     const newBoard: Board = { ...board, name: params.name };

@@ -4,17 +4,11 @@
     *ngFor="let board of boards"
   >
     <div class="title-wrapper">
-      <h2 *ngIf="boardEditingId !== board.id; else editBoardInput">{{ board.name }}</h2>
-      <ng-template #editBoardInput>
-        <input
-          class="edit-board-input"
-          [(ngModel)]="cacheBoardName"
-          (keyDown.enter)="updateBoardName({ id: board.id, name: cacheBoardName })"
-        />
-        <button class="update-board" (click)="updateBoardName({ id: board.id, name: cacheBoardName })">
-          <img src="assets/icons/done-black.svg" class="icon">
-        </button>
-      </ng-template>
+      <app-board-title
+        [editing]="boardEditingId === board.id"
+        [board]="board"
+        (onUpdateBoard)="updateBoardName($event)"
+      ></app-board-title>
     </div>
 
     <div class="tools">

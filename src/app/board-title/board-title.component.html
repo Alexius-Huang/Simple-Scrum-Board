@@ -1,0 +1,12 @@
+<h2 *ngIf="!editing; else editBoardInput">{{ board.name }}</h2>
+<ng-template #editBoardInput>
+  <input
+    class="edit-board-input"
+    [(ngModel)]="editBoardName"
+    (keyDown.enter)="updateBoard({ id: board.id, name: editBoardName })"
+    autofocus
+  />
+  <button class="update-board" (click)="updateBoard({ id: board.id, name: editBoardName })">
+    <img src="assets/icons/done-black.svg" class="icon">
+  </button>
+</ng-template>
