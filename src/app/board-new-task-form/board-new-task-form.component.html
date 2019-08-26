@@ -1,0 +1,32 @@
+<form
+  class="new-task-form"
+  [formGroup]="newTaskForm"
+  (ngSubmit)="onNewTaskSubmit(newTaskForm)"
+>
+  <label [class.error]="newTaskFormErrors.title.required">
+    <p class="label-title">Title</p>
+    <input
+      type="text" required
+      formControlName="title"
+      placeholder="Task Title"
+    />
+  </label>
+
+  <label [class.error]="newTaskFormErrors.description.required">
+    <p class="label-title">Description</p>
+    <input
+      type="text" required
+      formControlName="description"
+      placeholder="Task Description"
+    />
+  </label>
+
+  <div class="btn-group">
+    <button type="submit">
+      <img src="assets/icons/done.svg" />
+    </button>
+    <button (click)="clearNewTaskForm()">
+      <img src="assets/icons/clear.svg" />
+    </button>      
+  </div>
+</form>

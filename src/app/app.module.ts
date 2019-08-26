@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardsComponent } from './boards/boards.component';
 import { BoardTitleComponent } from './board-title/board-title.component';
+import { BoardNewTaskFormComponent } from './board-new-task-form/board-new-task-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardsComponent,
-    BoardTitleComponent
+    BoardTitleComponent,
+    BoardNewTaskFormComponent
   ],
   imports: [
     BrowserModule,

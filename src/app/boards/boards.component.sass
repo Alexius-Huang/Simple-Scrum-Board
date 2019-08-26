@@ -25,26 +25,6 @@ ul.boards
       background-color: white
       position: relative
 
-    > div.title-wrapper > h2
-      font: lighter 14pt
-      color: #333
-      margin: 0
-
-    > div.title-wrapper > input.edit-board-input
-      height: 20pt
-      line-height: 20pt
-      font-size: 12pt
-      border-bottom: 1pt solid #222
-      width: 100%
-
-    > div.title-wrapper > button.update-board
-      width: 20pt
-      height: 20pt
-      position: absolute
-      right: 10pt
-      top: 8pt
-      @include vertical-align
-
     > div.tools
       height: 0
       overflow: hidden
@@ -63,44 +43,6 @@ ul.boards
     &:hover > div.tools
       height: 30pt
       transition: .25s
-
-    > form.new-task-form
-      margin: 8pt 0
-      > label
-        display: block
-
-      > label > p.label-title
-        margin: 0
-        font-size: 10px
-        line-height: 18px
-
-      > label > input[type="text"]
-        border-bottom: 1pt solid white
-        width: 100%
-        color: white
-        font-size: 14px
-        line-height: 24px
-        &::placeholder
-          color: rgba(255, 255, 255, .5)
-
-      > label + label
-        margin-top: 8pt
-
-      > div.btn-group
-        margin-top: 8pt
-        text-align: right
-      > div.btn-group > button
-        display: inline-block
-
-        + button
-          margin-left: 5pt
-
-      > label.error
-        > p.label-title:after
-          content: ' *required'
-          color: red
-        > input
-          border-bottom-color: red
 
 ul.tasks
   max-height: 75vh

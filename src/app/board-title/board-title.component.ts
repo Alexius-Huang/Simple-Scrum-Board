@@ -9,7 +9,7 @@ import {
 import { Board } from '../boards/board.model';
 
 @Component({
-  selector: 'app-board-title',
+  selector: 'board-title',
   templateUrl: './board-title.component.html',
   styleUrls: ['./board-title.component.sass']
 })

@@ -49,6 +49,12 @@
       "title": "Learn VueJS",
       "description": "Learn simple VueJS",
       "id": 6
+    },
+    {
+      "boardId": 1,
+      "title": "Send New PR",
+      "description": "After complete the Simple Scrum Board, send a new PR and add to my portfolio",
+      "id": 7
     }
   ]
 }

@@ -1,0 +1,37 @@
+form.new-task-form
+  margin: 8pt 0
+  > label
+    display: block
+
+  > label > p.label-title
+    margin: 0
+    font-size: 10px
+    line-height: 18px
+
+  > label > input[type="text"]
+    border-bottom: 1pt solid white
+    width: 100%
+    color: white
+    font-size: 14px
+    line-height: 24px
+    &::placeholder
+      color: rgba(255, 255, 255, .5)
+
+  > label + label
+    margin-top: 8pt
+
+  > div.btn-group
+    margin-top: 8pt
+    text-align: right
+  > div.btn-group > button
+    display: inline-block
+
+    + button
+      margin-left: 5pt
+
+  > label.error
+    > p.label-title:after
+      content: ' *required'
+      color: red
+    > input
+      border-bottom-color: red

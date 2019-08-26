@@ -4,11 +4,11 @@
     *ngFor="let board of boards"
   >
     <div class="title-wrapper">
-      <app-board-title
+      <board-title
         [editing]="boardEditingId === board.id"
         [board]="board"
         (onUpdateBoard)="updateBoardName($event)"
-      ></app-board-title>
+      ></board-title>
     </div>
 
     <div class="tools">
@@ -23,39 +23,12 @@
       </button>
     </div>
 
-    <form
-      class="new-task-form"
+    <board-new-task-form
       *ngIf="newTaskBoardId === board.id"
-      [formGroup]="newTaskForm"
-      (ngSubmit)="onNewTaskSubmit(newTaskForm.value)"
-    >
-      <label [class.error]="newTaskFormErrors.title.required">
-        <p class="label-title">Title</p>
-        <input
-          type="text" required
-          formControlName="title"
-          placeholder="Task Title"
-        />
-      </label>
-
-      <label [class.error]="newTaskFormErrors.description.required">
-        <p class="label-title">Description</p>
-        <input
-          type="text" required
-          formControlName="description"
-          placeholder="Task Description"
-        />
-      </label>
-
-      <div class="btn-group">
-        <button type="submit">
-          <img src="assets/icons/done.svg" />
-        </button>
-        <button (click)="clearNewTaskForm()">
-          <img src="assets/icons/clear.svg" />
-        </button>      
-      </div>
-    </form>
+      [boardId]="board.id"
+      (onSubmit)="onNewTaskSubmit($event)"
+      (onClear)="clearNewTaskForm($event)"
+    ></board-new-task-form>
 
     <ul class="tasks">
       <li

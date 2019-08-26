@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Board } from './board.model';
 import { BoardService } from '../board.service';
 import { Task } from './task.model';
@@ -17,14 +17,6 @@ export class BoardsComponent implements OnInit {
   cacheBoardName?: string;
 
   newTaskBoardId?: number;
-  newTaskForm;
-  newTaskFormErrors?: {
-    title: object,
-    description: object
-  } = {
-    title: {},
-    description: {},
-  };
 
   get boardTaskMap(): Map<number, Task> {
     const { boards, tasks } = this;
@@ -40,10 +32,7 @@ export class BoardsComponent implements OnInit {
     return mapping;
   }
 
-  constructor(
-    private boardService: BoardService,
-    private formBuilder: FormBuilder,
-  ) {}
+  constructor(private boardService: BoardService) {}
 
   ngOnInit() {
     this.fetchBoards();
@@ -62,33 +51,17 @@ export class BoardsComponent implements OnInit {
 
   newTask(boardId: number): void {
     this.newTaskBoardId = boardId;
-    this.newTaskForm = this.formBuilder.group({
-      boardId,
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-    });
   }
 
-  onNewTaskSubmit(data) {
-    const title = this.newTaskForm.get('title');
-    const description = this.newTaskForm.get('description');
-
-    this.newTaskFormErrors = {
-      title: title.errors || {},
-      description: description.errors || {},
-    };
-
-    if (this.newTaskForm.status !== 'INVALID') {
-      this.boardService.createTask(data)
-        .subscribe(task => {
-          this.tasks = [...this.tasks, task];
-          this.clearNewTaskForm();
-        });
-    }
+  onNewTaskSubmit(form: FormGroup) {
+    this.boardService.createTask(form.value)
+      .subscribe(task => {
+        this.tasks = [...this.tasks, task];
+        this.clearNewTaskForm();
+      });
   }
 
   clearNewTaskForm() {
-    this.newTaskForm.reset();
     this.newTaskBoardId = null;
   }
 
